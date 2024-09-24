@@ -1,0 +1,32 @@
+pipeline{
+    agent any
+    environment{
+         evn.NEW_VARIBLE="GOWSHIK"
+         env.BRANCH_NAME='main'
+    }
+
+    stages{
+        stage("Deployment"){
+            step{
+                echo "Hello World"
+            }
+        }
+        stage("Built"){
+            when{
+                expression{
+                    BRANCH_NAME='main'
+                }
+            }
+            stage{
+                echo "${env.NEW_VARIBLE}"
+            }
+
+        }
+    }
+    post{
+        always{
+            echo "Completed"
+        }
+       
+    }
+}
