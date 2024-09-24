@@ -1,8 +1,8 @@
 pipeline{
     agent any
     environment{
-         env.NEW_VARIBLE = "GOWSHIK"
-         env.BRANCH_NAME = 'main' //for the Better Clarity
+         NEW_VARIBLE = "GOWSHIK"
+         BRANCH_NAME = 'main' //for the Better Clarity
     }
 
     stages{
