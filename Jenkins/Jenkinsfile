@@ -1,7 +1,7 @@
 pipeline{
     agent any
     environment{
-         evn.NEW_VARIBLE="GOWSHIK"
+         env.NEW_VARIBLE="GOWSHIK"
          env.BRANCH_NAME='main'
     }
 
