@@ -1,12 +1,22 @@
 pipeline {
-    agent none
-
+    agent any
+     tools{
+     gradle 'Gradle-6.2'
+     }
     stages {
-        stage('Build') {
+        stage('checkout'){
+            steps{
+                echo 'Checkout From the Jenkins-Repo '
+            }
+        }
+        stage('Build-FrontEnd') {
             steps {
+                
                 echo 'Building the project...'
                 
-                sh 'echo "Build process complete"'
+                bat 'echo "Build process complete"'
+                node('NodeJS-22.9'){
+                    bat 'yarn install'
             }
         }
 
@@ -14,7 +24,7 @@ pipeline {
             steps {
                 echo 'Running tests...'
                
-                sh 'echo "Tests are successful"'
+                bat 'echo "Tests are successful"'
             }
         }
 
@@ -22,7 +32,8 @@ pipeline {
             steps {
                 echo 'Deploying the application...'
                 // Insert your deployment commands here
-                sh 'echo "Deployment complete"'
+                bat'echo "Deployment complete"'
+                bat 'gradle -v'
             }
         }
     }
