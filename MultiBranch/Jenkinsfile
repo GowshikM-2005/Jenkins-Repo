@@ -7,9 +7,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building the project...'
-               
                 bat 'echo "Build process complete"'
-              nodejs(NodeJS 22){
+              nodejs('NodeJS 22'){
                 bat 'npm install'
                 
               }
