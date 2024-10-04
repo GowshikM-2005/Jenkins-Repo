@@ -1,0 +1,45 @@
+pipeline {
+    agent any
+    tools{
+      gradle 'Gradle 6.2'
+    }
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building the project...'
+               
+                bat 'echo "Build process complete"'
+              nodejs(NodeJS 22){
+                bat 'npm install'
+                
+              }
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Running tests...'
+                // Insert your testing commands here (e.g., unit tests, integration tests)
+                bat 'echo "Tests are successful"'
+              bat 'gradle -v'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying the application...'
+                // Insert your deployment commands here
+                bat'echo "Deployment complete"'
+            }
+        }
+    }
+
+    post {
+        always {
+            echo 'This will always run after the stages, for cleanup or notifications.'
+        }
+        success {
+            echo 'Pipeline succeeded!'
+        }
+    }
+}
