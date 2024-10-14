@@ -10,7 +10,7 @@ pipeline {
         stage('Build'){
             steps{
             git branch: 'dev', credentialsId: 'ac7e6773-d0b7-48f7-b4ec-657c450d43cc', url: 'https://github.com/GowshikM-2005/Jenkins-Repo.git'
-            bat label: '' ,script:'python sort.py'
+            bat'python Python/sort.py'
             }
         }
         stage('Test'){
